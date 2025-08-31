@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Calculator</title>
+    <style>
+        .error {
+            background-color: #ffdddd;
+            color: #ff0000;
+            border: 1px solid #ff0000;
+        }
+        .success {
+            background-color: #ddffdd;
+            color: #008800;
+            border: 1px solid #008800;
+        }
+    </style>
 </head>
 <body>
     <div style="max-width: 500px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
@@ -28,6 +40,44 @@
         </div>
     </div>
 
+    <script>
+        // Create a global math module for browser compatibility
+        // In a real application with bundling, we would use ES modules
+        const mathModule = (function() {
+            // This code will be replaced by the actual math.js file
+            // when we move to a bundler like webpack or rollup
+            function sum(a, b) {
+                if (typeof a !== 'number' || typeof b !== 'number' || isNaN(a) || isNaN(b)) {
+                    throw new Error('Invalid input: Both arguments must be valid numbers');
+                }
+                return a + b;
+            }
+
+            function calculate(a, b, operation) {
+                if (typeof a !== 'number' || typeof b !== 'number' || isNaN(a) || isNaN(b)) {
+                    throw new Error('Invalid input: Both arguments must be valid numbers');
+                }
+                
+                switch (operation) {
+                    case 'add': return sum(a, b);
+                    case 'subtract': return a - b;
+                    case 'multiply': return a * b;
+                    case 'divide':
+                        if (b === 0) {
+                            throw new Error('Division by zero is not allowed');
+                        }
+                        return a / b;
+                    default:
+                        throw new Error('Invalid operation');
+                }
+            }
+
+            return {
+                sum,
+                calculate
+            };
+        })();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
