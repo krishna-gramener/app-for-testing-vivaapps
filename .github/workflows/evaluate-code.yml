@@ -21,7 +21,7 @@ jobs:
 
       # Step 2: Run the Code Structure Evaluator action
       - name: Evaluate Code Structure
-        uses: ./  # Use the action from the current repository
+        uses: krishna-gramener/viva-evaluation-github-actions@main
         with:
           api-key: ${{ secrets.OPENAI_API_KEY }}  # OpenAI API key stored in GitHub secrets
           # Optional: Specify a custom rubric file if you want to use your own evaluation criteria
