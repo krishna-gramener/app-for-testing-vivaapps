@@ -1,5 +1,12 @@
-// Import the math module (for browser compatibility, we'll use a different approach)
-// In a real application with bundling, we would use: import { sum } from './math.js';
+/**
+ * Simple function to calculate the sum of two numbers
+ * @param {number} a - First number
+ * @param {number} b - Second number
+ * @returns {number} - Sum of the two numbers
+ */
+function sum(a, b) {
+    return a + b;
+}
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -17,10 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error('Please enter valid numbers');
             }
             
-            // Use the math module to calculate the sum
-            // For browser compatibility without bundling, we'll use the global math object
-            // that will be attached to the window in index.html
-            const result = mathModule.sum(firstNumber, secondNumber);
+            // Calculate the sum directly
+            const result = sum(firstNumber, secondNumber);
             
             // Display the result
             document.getElementById('result').textContent = result;
